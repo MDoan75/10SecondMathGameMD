@@ -1,10 +1,9 @@
-$(document).ready(function() {
-
+$(document).ready(function(){
   var currentQuestion;
   var interval;
   var timeLeft = 10;
   var score = 0;
-
+  
   var updateTimeLeft = function (amount) {
     timeLeft += amount;
     $('#time-left').text(timeLeft);
@@ -12,7 +11,7 @@ $(document).ready(function() {
   
   var updateScore = function (amount) {
     score += amount;
-    $('#current-score').text("Current score: " + score);
+    $('#score').text(score);
   };
   
   var startGame = function () {
@@ -20,22 +19,16 @@ $(document).ready(function() {
       if (timeLeft === 0) {
         updateTimeLeft(10);
         updateScore(-score);
-       $('#show-seconds').css('color', 'black');
       }
       interval = setInterval(function () {
         updateTimeLeft(-1);
-        if (timeLeft < 4) {
-          $('#show-seconds').css('color', 'green');
-        } else if (timeLeft <= 7) {
-          $('#show-seconds').css('color', 'blue');
-        } else 
         if (timeLeft === 0) {
           clearInterval(interval);
           interval = undefined;
         }
       }, 1000);  
-      
     }
+  };
   
   var randomNumberGenerator = function (size) {
     return Math.ceil(Math.random() * size);
