@@ -42,6 +42,35 @@ $(document).ready(function(){
     question.answer = num1 + num2;
     question.equation = String(num1) + " + " + String(num2);
     
+    if($("#addition").prop('checked')){
+      question.answer = num1 + num2;
+      question.equation = String(num1) + " + " + String(num2);
+    }
+  
+  if($("#subtraction").prop('checked')){
+      question.answer = num1 - num2;
+      question.equation = String(num1) + " - " + String(num2);
+    }
+  
+  if($("#multiplication").prop('checked')){
+      question.answer = num1 * num2;
+      question.equation = String(num1) + " * " + String(num2);
+    }
+  
+  if($("#division").prop('checked')){
+    for(i=2; i<=10; i++){
+      dividend=num1%i;
+      if(dividend===0){
+        num2=i;
+        break;
+      } else {
+        num1 = randomNumberGenerator(100);
+        i=2;
+        }
+      }
+      question.answer = num1 / num2;
+      question.equation = String(num1) + " / " + String(num2);
+    }      
     return question;
   };
   
