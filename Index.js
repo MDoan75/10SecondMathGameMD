@@ -41,8 +41,10 @@ $(document).ready(function(){
     
     question.answer = num1 + num2;
     question.equation = String(num1) + " + " + String(num2);
+    quesstion.answer = num1 - num2;
+    question.equation = String(num1) + " - " + String(num2);
+    question.equation = num1 * num2;
     question.equation = String(num1) + " * " + String(num2);
-    question.equation = String(num1) + " / " + String(num2);
     
     return question;
   };
