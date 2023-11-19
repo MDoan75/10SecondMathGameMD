@@ -34,14 +34,45 @@ $(document).ready(function(){
     return Math.ceil(Math.random() * size);
   };
   
-  var questionGenerator = function () {
+ var questionGenerator = function () {
     var question = {};
-    var num1 = randomNumberGenerator(10);
-    var num2 = randomNumberGenerator(10);
+    var num1 = randomNumberGenerator(number);
+    var num2 = randomNumberGenerator(number);
     
-    question.answer = num1 + num2;
-    question.equation = String(num1) + " + " + String(num2);
+    //question.answer = num1 + num2;
+    //question.equation = String(num1) + " + " + String(num2);
+        
+    if($("#Add").prop('checked')){
+        question.answer = num1 + num2;
+        question.equation = String(num1) + " + " + String(num2);
+    }
     
+    if($("#Subtract").prop('checked')){
+        question.answer = num1 - num2;
+        question.equation = String(num1) + " - " + String(num2);
+    }
+    
+    if($("#Multiply").prop('checked')){
+        question.answer = num1 * num2;
+        question.equation = String(num1) + " * " + String(num2);
+    }
+    
+    if($("#Divide").prop('checked')){
+        for(i=2; i<=10; i++){
+            dividend=num1%i;
+            if(dividend===0){
+                num2=i;
+                break;
+            }
+            else{
+                num1 = randomNumberGenerator(50);
+                i=2;
+            }
+        }
+      question.answer = num1 / num2;
+        question.equation = String(num1) + " / " + String(num2);
+    }      
+        
     return question;
   };
   
